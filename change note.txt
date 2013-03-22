@@ -1,0 +1,20 @@
+change note.
+
+build 5:
+- Ajout d'une sauvegarde dans la base de donnée du téléphone
+
+build 4:
+- Correction d'un bug lors de l'effacement des horaires, seul la première ligne était effacé
+- Mode multi-thread afin que l'application ne soit plus figé à chaque appel réseaux + suppression de la fonction faisant bugger la montre Im'watch
+- Correctif pour la montre ImWatch
+
+build 3:
+- Modification de l'affichage des horaires afin de les afficher correctement
+- Remplacement des code ligne par des numéros de ligne (01 devient L1, DIV devient city, C devient Corol)
+
+build 2 : 
+- Ajout de la liste des arrêts
+- Ajout des horaires de façon particulière
+
+build 1 : 
+- Ajout de la liste des lignes

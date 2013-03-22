@@ -1,0 +1,126 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" 
+    tools:context=".MainActivity" >
+    <LinearLayout 
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/chose_this_line" />
+
+    <Spinner
+        android:id="@+id/line_list"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        tools:listitem="@android:layout/simple_list_item_1" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/chose_station" />
+
+    <Spinner
+        android:id="@+id/list_station"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        tools:listitem="@android:layout/simple_list_item_1" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+      			android:layout_width="0dip"
+      			android:layout_weight="1"
+                android:text="@string/Direction" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:padding="5dp"
+      			android:layout_width="0dip"
+      			android:layout_weight="1"
+                android:text="@string/temps_restant" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/text_Direction1"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+      			android:layout_width="0dip"
+      			android:layout_weight="1"
+                android:text="@string/NC" />
+
+            <TextView
+                android:id="@+id/text_time1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:padding="5dp"
+      			android:layout_width="0dip"
+      			android:layout_weight="1"
+                android:text="@string/NC" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/text_Direction2"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+      			android:layout_width="0dip"
+      			android:layout_weight="1"
+                android:text="@string/NC" />
+
+            <TextView
+                android:id="@+id/text_time2"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:padding="5dp"
+      			android:layout_width="0dip"
+      			android:layout_weight="1"
+                android:text="@string/NC" />
+
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/refresh_button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="@string/refresh_time" />
+
+</LinearLayout>
+</ScrollView>

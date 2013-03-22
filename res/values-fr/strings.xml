@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DiviaTotem</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="hello_world">Hello world !</string>
+    <string name="refresh">Recharger les lignes</string>
+    <string name="reload">Rechargement en cours</string>
+    <string name="chose_this_line">Choisissez une ligne :</string>
+    <string name="cur_line">"Ligne choisie : "</string>
+    <string name="chose_station">Choisissez un arrêt :</string>
+    <string name="no_line_chose">Aucune ligne choisie</string>
+
+</resources>

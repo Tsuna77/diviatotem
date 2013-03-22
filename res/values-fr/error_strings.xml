@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ERRURL">L\'url de récupération de la liste des lignes est malformé</string>
+    <string name="ERRCON">Impossible de se connecter au serveur</string>
+    
+</resources>
