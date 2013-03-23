@@ -65,7 +65,17 @@ public class diviaHoraire extends divia {
 			left="A l'approche";
 		}
 		else{
-			left="Dans "+time_left+" minutes ";
+			int work_time = time_left;
+			myLog.write(TAG, "temps restant en minutes : "+time_left);
+			left="Dans ";
+			if (work_time >= 60){
+				// au moins 1 heure d'attente
+				int nb_heure = work_time/60;
+				left+=nb_heure+"h";
+				work_time-= 60*nb_heure;
+				
+			}
+			left+=work_time+" min ";
 		}
 		return left;
 	}

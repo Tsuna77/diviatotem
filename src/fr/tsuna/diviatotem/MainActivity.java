@@ -1,21 +1,17 @@
 package fr.tsuna.diviatotem;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.xmlpull.v1.XmlPullParserException;
 
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,7 +37,7 @@ public class MainActivity extends Activity {
 	private Runnable run_horaire = new Runnable() {public void run() {update_time();}}; 
 	private List<diviaHoraire> list_horaire=new ArrayList<diviaHoraire>();
 	private Boolean station_activated=false;
-	private Boolean refresh_activated=false;
+	private Boolean refresh_activated=true;
 	private Boolean refreshing=false;
 	private Boolean waiting_for_refresh=false;
 	
@@ -59,6 +55,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onResume(){
 		super.onResume();
+		refresh_activated=true;
 		update_time();
 	}
 	
@@ -126,7 +123,7 @@ public class MainActivity extends Activity {
 	        public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 myLog.write(TAG,"Mise à jour du spinner list_station (89)");
         		if (station_activated){
-                    			
+        	        refresh_activated=true;
 		        	Spinner test = (Spinner) findViewById(R.id.list_station);
 	                current_station = (diviaStation) test.getSelectedItem();
 	                update_time();
@@ -222,14 +219,11 @@ public class MainActivity extends Activity {
 		});
 		//*/
      }
-    private void refresh_station(){
+    private synchronized void refresh_station(){
     	 if (!refreshing){
     		 refreshing=true;
 	    	 myLog.write(TAG,"Début du thread de mise à jour des arrêts");
-	    	 station_name.clear();
-	    	 station_name.add(new diviaStation("","Mise à jour en cours"));
 	    	 active_refresh(false);	// désactivation du bouton de rafraischissement
-	    	 update_station_list();
 	    	 try {
 	    		if (current_line.getVers() != ""){
 	    			
@@ -258,7 +252,7 @@ public class MainActivity extends Activity {
     		 wait_before_refresh_station();
     	 }
      }
-    private void refresh_line_thread(){
+    private synchronized void refresh_line_thread(){
     	if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.GINGERBREAD){
     		refresh_line();
     	}
@@ -273,10 +267,10 @@ public class MainActivity extends Activity {
     	Toast.makeText(getApplicationContext(), getString(R.string.line_loading), Toast.LENGTH_SHORT).show();
 		
     }
-    private void update_time(){ 
+    private synchronized void update_time(){ 
     	
     	handler_horaire.removeCallbacks(run_horaire);
-    	if (current_station != null && !current_station.getVers().equals("") && current_station.getVers() != null){
+    	if (refresh_activated && current_station != null && !current_station.getVers().equals("") && current_station.getVers() != null){
     		myLog.write(TAG,"Récupération des informations sur la station "+current_station.getNom());
         	handler_horaire.postDelayed(run_horaire, 30000);
 
@@ -298,7 +292,7 @@ public class MainActivity extends Activity {
     		
     	}
     }
-    private void wait_before_refresh_station(){
+    private synchronized void wait_before_refresh_station(){
     	// attend dans un thread avant de lancer le refresh des stations
     	if (!waiting_for_refresh){
 	    	new Thread(new Runnable(){
@@ -377,7 +371,7 @@ public class MainActivity extends Activity {
     	}
     	
     }
-    private void update_station_list(){
+    private synchronized void update_station_list(){
 			runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
@@ -386,7 +380,7 @@ public class MainActivity extends Activity {
 				}
 			});
     }
-    private void update_station_list_UI(){
+    private synchronized void update_station_list_UI(){
     	if (station_activated && !station_name.isEmpty()){
 	        myLog.write(TAG,"Mise à jour du spinner list_station (371)");
 	        try{
@@ -403,7 +397,7 @@ public class MainActivity extends Activity {
     /*
      * Récupère la liste des lignes de divia
      */
-    private void refresh_line(){
+    private synchronized void refresh_line(){
 
 		// récupération des lignes via l'api
     	line_name.clear();
