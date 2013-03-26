@@ -10,5 +10,11 @@
     <string name="cur_line">"Ligne choisie : "</string>
     <string name="chose_station">Choisissez un arrêt :</string>
     <string name="no_line_chose">Aucune ligne choisie</string>
+    <string name="about_desc">L\'application diviaTotem est une version non officiel de l\'application des totems du réseaux de transport en commun Divia.\n</string>
+    <string name="about_fonctionnement">Les données utilisé pour afficher les données sont les mêmes que celle du widget windows disponible sur le site de l\'exploitant.\n</string>
+    <string name="about_divia_site">Pour plus d\'information sur le réseaux Divia rendez-vous sur le site\n www.divia.fr \n</string>
+    <string name="about_menu">A propos</string>
+    <string name="back">Retour</string>
+    <string name="about_dev_info">Application réalisé par Raphaël Ricordeau, contact : android@tsuna.fr</string>
 
 </resources>

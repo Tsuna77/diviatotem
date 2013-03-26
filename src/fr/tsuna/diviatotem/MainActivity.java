@@ -421,16 +421,35 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-    
+    /*
+     * Affiche la page du A propos
+     */
+    private void launch_about(){
+
+    	setContentView(R.layout.about);
+
+		((Button)findViewById(R.id.button_back_to_main)).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				setContentView(R.layout.select_line);
+				onCreate(null);
+			}
+		});
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
         	case R.id.action_refresh:
                 refresh_line_thread();
-            default:
-                return super.onOptionsItemSelected(item);
+                break;
+        	case R.id.action_about:
+        		launch_about();
+        		break;
+                
         }
+        return super.onOptionsItemSelected(item);
     }
     
 }
