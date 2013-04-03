@@ -21,5 +21,7 @@
     <string name="version">Version : </string>
     <string name="updating">Mise à jour en cours</string>
     <string name="stop_refreshing">Arrêt du rafraichissement automatique</string>
+    <string name="quit">Quitter</string>
+    <string name="bp_menu">Menu</string>
 
 </resources>

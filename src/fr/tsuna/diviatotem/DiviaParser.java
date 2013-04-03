@@ -32,13 +32,26 @@ public class DiviaParser extends AsyncTask<Object, Object, Object> {
     private static final String TAG = "diviaParser";
     private static Context context= null;
 
+    private boolean isConnected(){
+    	boolean connected=false;
+		NetworkInfo info = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+		if (info != null && info.isConnected()){
+			connected=true;
+		}
+		
+		// ajout d'un bypass pour la montre Imwatch dont la valeur retourné est incorrect.
+		if (android.os.Build.DEVICE.equals("Si14_imWatch")){
+			myLog.write(TAG,"Détection d'une Imwatch, activation du réseaux non détectable");
+			connected=true;
+		}
+		return connected;
+    }
     
     public static void setContext(Context c){
     	context=c;
     }
 	public List<diviaLine> parseLine() throws XmlPullParserException, IOException{
-		NetworkInfo info = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
-		if (info == null || !info.isConnected()){
+		if (!isConnected()){
 			throw new IOException("Réseaux de donnée non disponible");
 		}
 		
@@ -79,8 +92,7 @@ public class DiviaParser extends AsyncTask<Object, Object, Object> {
 	}
 
 	public List<diviaHoraire> parser_horaire(diviaStation current_station) throws IOException{
-		NetworkInfo info = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
-		if (info == null || !info.isConnected()){
+		if (!isConnected()){
 			throw new IOException("Réseaux de donnée non disponible");
 		}
 		List<diviaHoraire> list_horaire = new ArrayList<diviaHoraire>();
@@ -140,8 +152,7 @@ public class DiviaParser extends AsyncTask<Object, Object, Object> {
 	}
 	
 	public List<diviaStation> parse_station(diviaLine ligne) throws XmlPullParserException, IOException{
-		NetworkInfo info = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
-		if (info == null || !info.isConnected()){
+		if (!isConnected()){
 			throw new IOException("Réseaux de donnée non disponible");
 		}
 		List<diviaStation> station= new ArrayList<diviaStation>();

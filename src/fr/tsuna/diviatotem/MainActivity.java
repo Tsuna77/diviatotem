@@ -9,6 +9,8 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -145,6 +147,14 @@ public class MainActivity extends Activity {
 			}
 		});
         
+        ((Button)findViewById(R.id.button_menu)).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				openOptionsMenu();
+				
+			}
+		});
 
 		active_station(false);
         update_list();
@@ -446,6 +456,10 @@ public class MainActivity extends Activity {
                 break;
         	case R.id.action_about:
         		launch_about();
+        		break;
+        	case R.id.action_quit:
+        		onPause();
+        		finish();
         		break;
                 
         }

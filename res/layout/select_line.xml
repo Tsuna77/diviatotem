@@ -124,14 +124,29 @@
         		android:textSize="@dimen/Text_size"  />
 
         </TableRow>
+
     </TableLayout>
 
-    <Button
-        android:id="@+id/refresh_button"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="@string/refresh_time"
-        android:textSize="@dimen/Text_size"  />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp" >
+
+        <Button
+            android:id="@+id/refresh_button"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="0.42"
+            android:text="@string/refresh_time"
+            android:textSize="@dimen/Text_size" />
+
+        <Button
+            android:id="@+id/button_menu"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="0.42"
+            android:text="@string/bp_menu" />
+    </LinearLayout>
 
 </LinearLayout>
 </ScrollView>

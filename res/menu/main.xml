@@ -11,5 +11,11 @@
         android:showAsAction="never"
         android:title="@string/about_menu"
     />
+    <item 
+    	android:id="@+id/action_quit"
+    	android:orderInCategory="102"
+    	android:showAsAction="never"
+    	android:title="@string/quit"
+    />
 
 </menu>
