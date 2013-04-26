@@ -17,6 +17,8 @@ public class DatabaseHandler extends SQLiteOpenHelper{
     public static final String LIGNES_SENS="sens";
     public static final String LIGNES_VERS="vers";
     
+    public static final String TABLE_FAVORIS = "favoris";
+    public static final String FAVORIS_ARRET_ID = "ARRET_ID";
     
 	
     public DatabaseHandler(Context context) {
@@ -27,13 +29,20 @@ public class DatabaseHandler extends SQLiteOpenHelper{
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		String CREATE_LIGNE_TABLE = "CREATE TABLE " + TABLE_LIGNES + "("
-                + LIGNES_ID + " INTEGER PRIMARY KEY," + LIGNES_KEY + " AUTOINCREMENT,"
+                + LIGNES_ID + " INTEGER PRIMARY KEY,"
                 + LIGNES_CODE + " TEXT,"
-                + LIGNES_NOM + "TEXT,"
-                + LIGNES_SENS +"TEXT,"
-                + LIGNES_VERS +"TEXT)";
-        db.execSQL(CREATE_LIGNE_TABLE);
+                + LIGNES_NOM + " TEXT,"
+                + LIGNES_SENS +" TEXT,"
+                + LIGNES_VERS +" TEXT)";
+
+        String CREATE_FAVORIS_TABLE = "CREATE TABLE "+ TABLE_FAVORIS +"("
+        		+ FAVORIS_ARRET_ID + "INTEGER PRIMARY KEY)";
 		
+		
+		
+        db.execSQL(CREATE_LIGNE_TABLE);
+        db.execSQL(CREATE_FAVORIS_TABLE);
+        
 	}
 
 	@Override

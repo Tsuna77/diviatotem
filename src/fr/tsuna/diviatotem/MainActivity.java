@@ -14,6 +14,8 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -159,6 +161,8 @@ public class MainActivity extends Activity {
 		active_station(false);
         update_list();
         refresh_line_thread();
+        
+        diviaDB diviadb = new diviaDB(this);
         
     }
      /*	
@@ -454,9 +458,12 @@ public class MainActivity extends Activity {
         	case R.id.action_refresh:
                 refresh_line_thread();
                 break;
+        	/*
         	case R.id.action_about:
+        	
         		launch_about();
         		break;
+        	*/
         	case R.id.action_quit:
         		onPause();
         		finish();

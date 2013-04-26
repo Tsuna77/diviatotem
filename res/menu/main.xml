@@ -5,12 +5,15 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/refresh"/>
+    <!--
+    	En cours de dev, provoque un crash de l'appli, mit de coté tant que l'appli n'est pas multi activité 
     <item
         android:id="@+id/action_about"
         android:orderInCategory="101"
         android:showAsAction="never"
         android:title="@string/about_menu"
     />
+     -->
     <item 
     	android:id="@+id/action_quit"
     	android:orderInCategory="102"
